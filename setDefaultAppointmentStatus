@@ -1,0 +1,7 @@
+trigger SetDefaultAppointmentStatus on Appointment__c (after insert) {
+    for (Appointment__c appointment : Trigger.new) {
+        if (appointment.Status__c == null) {   // Only set if Status is not already defined
+            appointment.Status__c = 'Scheduled'; // Set default status as 'Scheduled'
+        }
+    }
+}
